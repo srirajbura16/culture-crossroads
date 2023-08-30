@@ -2,6 +2,10 @@
 	import { onMount } from 'svelte';
 	import * as d3 from 'd3';
 
+	export let data;
+	console.log(data);
+	const { question, coutry_code = 'NA', country_name = 'NA' } = data;
+
 	onMount(() => {
 		const svg = d3.select('svg');
 		const width = +svg.attr('width');
@@ -35,5 +39,7 @@
 		});
 	});
 </script>
+
+<h2>{question}</h2>
 
 <svg width="800" height="800" />
