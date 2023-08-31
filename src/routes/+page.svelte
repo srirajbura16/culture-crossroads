@@ -25,6 +25,7 @@
 				.data(data.features)
 				.enter()
 				.append('path')
+				.attr('class', 'country')
 				.attr('fill', '#69b3a2')
 				.attr('d', d3.geoPath().projection(projection))
 				.style('stroke', '#fff')
@@ -48,6 +49,11 @@
 					//check if countyr matches with opein ai
 					console.log(d.properties.name);
 				});
+
+			svg
+				.selectAll('.country')
+				.append('title')
+				.text((d) => d.properties.name);
 		});
 	});
 </script>
