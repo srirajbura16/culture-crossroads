@@ -4,7 +4,9 @@
 
 	export let data;
 	console.log(data);
-	const { question, coutry_code = 'NA', country_name = 'NA' } = data;
+	const { question, country_name } = data;
+
+	let message = 'play game';
 
 	onMount(() => {
 		const svg = d3.select('svg');
@@ -34,6 +36,16 @@
 				})
 				.on('click', (event, d) => {
 					console.log(d);
+					const userPick = d.properties.name.toLowerCase();
+					const theAnswer = country_name.toLowerCase();
+
+					if (userPick === theAnswer) {
+						message = `Good job, you got it right! <br/> ${country_name}`;
+						location.reload();
+					} else {
+						message = 'Try Again';
+					}
+					//check if countyr matches with opein ai
 					console.log(d.properties.name);
 				});
 		});
@@ -41,5 +53,6 @@
 </script>
 
 <h2>{question}</h2>
+<h3>{@html message}</h3>
 
 <svg width="800" height="800" />
