@@ -10,10 +10,9 @@ export async function load() {
 		messages: [
 			{
 				role: 'system',
-				content: `Generate an intriguing question related to a country's history and structure the response in a json object, for example: 
+				content: `Generate an intriguing question related to a country -- on various topics. The answer should always equal to the coutry. Structure the response in a json object, for example: 
                     {
                     "question": "Which nation is renowned for its ancient civilization that built massive pyramids along the Nile River?",
-                    "country_code": "EG",
                     "country_name": "Egypt"
                     } 
                     The question should reflect only one country and the country should not be revealed in the question.
