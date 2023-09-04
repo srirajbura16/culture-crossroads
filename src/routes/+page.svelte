@@ -2,9 +2,11 @@
 	import { onMount } from 'svelte';
 	import * as d3 from 'd3';
 
-	export let data;
-	console.log(data);
-	const { question, country_name } = data;
+	// export let data;
+	// console.log(data);
+	// const { question, country_name } = data;
+
+	const country_name = 'China';
 
 	let message = 'play game';
 
@@ -12,15 +14,42 @@
 		const svg = d3.select('svg');
 		const width = +svg.attr('width');
 		const height = +svg.attr('height');
+		const initialScale = 1;
+		const zoomExtent = 5;
+		const translateExtent = [
+			[-(width * zoomExtent), -(height * zoomExtent)],
+			[width * zoomExtent, height * zoomExtent]
+		];
 
 		const projection = d3.geoNaturalEarth1().fitSize([width, height], { type: 'Sphere' });
+
+		const zoom = d3
+			.zoom()
+			.scaleExtent([initialScale, zoomExtent])
+			.translateExtent(translateExtent)
+			.on('zoom', zoomed);
+
+		svg.call(zoom);
+
+		svg
+			.append('rect')
+			.attr('width', width)
+			.attr('height', height)
+			.style('stroke', 'black')
+			.style('fill', 'none')
+			.style('stroke-width', 1);
+
+		const mapGroup = svg.append('g').attr('clip-path', 'url(#clip)');
+
+		function zoomed(event) {
+			mapGroup.attr('transform', event.transform);
+		}
 
 		d3.json(
 			'https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson'
 		).then((data) => {
 			// Draw the map
-			svg
-				.append('g')
+			mapGroup
 				.selectAll('path')
 				.data(data.features)
 				.enter()
@@ -58,7 +87,12 @@
 	});
 </script>
 
-<h2>{question}</h2>
-<h3>{@html message}</h3>
-
-<svg width="800" height="800" />
+<div class="text-center">
+	<h1 class="font-extrabold leading-none tracking-tight text-gray-900 text-3xl">
+		Place holder question. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, soluta?
+	</h1>
+	<h3>{@html message}</h3>
+	<div class=" flex justify-center items-center h-screen">
+		<svg width="836" height="416" class="block" />
+	</div>
+</div>
