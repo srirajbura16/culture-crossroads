@@ -2,11 +2,9 @@
 	import { onMount } from 'svelte';
 	import * as d3 from 'd3';
 
-	// export let data;
-	// console.log(data);
-	// const { question, country_name } = data;
-
-	const country_name = 'China';
+	export let data;
+	console.log(data);
+	const { question, country_name } = data;
 
 	let message = '';
 
@@ -89,9 +87,8 @@
 
 <div class="text-center">
 	<h1 class="font-extrabold leading-none tracking-tight text-gray-900 text-3xl">
-		Place holder question. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, soluta?
+		{question}
 	</h1>
-	<!-- <div>{question}</div> -->
 	<h3>{@html message}</h3>
 	<div class=" flex justify-center items-center h-screen">
 		<svg width="836" height="416" class="block" />
