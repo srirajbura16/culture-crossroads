@@ -8,7 +8,7 @@
 
 	const country_name = 'China';
 
-	let message = 'play game';
+	let message = '';
 
 	onMount(() => {
 		const svg = d3.select('svg');
@@ -91,6 +91,7 @@
 	<h1 class="font-extrabold leading-none tracking-tight text-gray-900 text-3xl">
 		Place holder question. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, soluta?
 	</h1>
+	<!-- <div>{question}</div> -->
 	<h3>{@html message}</h3>
 	<div class=" flex justify-center items-center h-screen">
 		<svg width="836" height="416" class="block" />
