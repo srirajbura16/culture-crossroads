@@ -5,9 +5,12 @@ const openai = new OpenAI({
 	apiKey: SECRET_API_KEY
 });
 
+console.log(`--${SECRET_API_KEY}--`);
+
 export async function load() {
 	const response = await openai.chat.completions.create({
-		model: 'gpt-3.5-turbo',
+		// model: 'gpt-3.5-turbo',
+		model: 'gpt-3.5-turbo-16k',
 		messages: [
 			{
 				role: 'system',

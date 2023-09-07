@@ -71,7 +71,7 @@
 						message = `Good job, you got it right! <br/> ${country_name}`;
 						location.reload();
 					} else {
-						message = 'Try Again';
+						message = `No, Not ${userPick}. Try Again`;
 					}
 					//check if countyr matches with opein ai
 					console.log(d.properties.name);
