@@ -85,12 +85,12 @@
 	});
 </script>
 
-<div class="text-center">
-	<h1 class="font-extrabold leading-none tracking-tight text-gray-900 text-3xl">
-		{question}
-	</h1>
-	<h3>{@html message}</h3>
-	<div class=" flex justify-center items-center h-screen">
-		<svg width="836" height="416" class="block" />
+<div class="min-h-screen bg-gray-100 flex items-center justify-center">
+	<div class="text-center">
+		<h1 class="font-extrabold text-gray-900 text-3xl mb-4">{question}</h1>
+		<h3 class="whitespace-pre-line">{@html message}</h3>
+		<div class="flex justify-center items-center mt-8">
+			<svg width="836" height="416" class="block" />
+		</div>
 	</div>
 </div>
